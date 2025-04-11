@@ -365,6 +365,19 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+            
+            {/* Executive Summary Text */}
+            <div className="prose prose-lg max-w-none text-darkBrown mt-8">
+              <p>
+                This analysis examines the structure, benefits, and potential financial impact of implementing the Winner's Circle Club as Milea Estate's ultra-premium membership tier. Positioned above the existing Jumper, Grand Prix, and Triple Crown tiers, the Winner's Circle represents a significant evolution in Milea's membership strategy that emphasizes flexibility, exclusivity, and enhanced experiences beyond traditional wine allocations.
+              </p>
+              <p>
+                With a quarterly commitment of $500 ($2,000 annually), this credit-based membership transforms the traditional wine club relationship into a comprehensive lifestyle proposition. By offering privileged access to exclusive spaces, wine storage, and premium experiences, the Winner's Circle Club promises to enhance member satisfaction, increase retention rates, and drive substantial additional revenue across all profit centers.
+              </p>
+              <p>
+                Based on our analysis, implementing the Winner's Circle could generate approximately $612,000 in annual incremental revenue through a combination of membership upgrades from existing club members and new premium member acquisitions. This represents a significant enhancement to Milea's current club revenue of approximately $432,000 annually.
+              </p>
+            </div>
           </div>
         </section>
         
