@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { LineChart, Line, CartesianGrid } from 'recharts';
-import { FaChartLine, FaUsers, FaDollarSign, FaTrophy, FaCalendarAlt, FaChartPie, FaLightbulb, FaChevronDown, FaWineGlass, FaTools, FaClipboardList } from 'react-icons/fa';
+import { FaChartLine, FaUsers, FaDollarSign, FaTrophy, FaCalendarAlt, FaChartPie, FaLightbulb, FaChevronDown, FaWineGlass, FaTools } from 'react-icons/fa';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import Login from './Login';
 import './App.css';
@@ -42,17 +42,6 @@ const Dashboard = () => {
   const [collapsedSections, setCollapsedSections] = useState({});
   const navigate = useNavigate();
   const auth = getAuth();
-
-  // Section previews data
-  const sectionPreviews = {
-    'executive-summary': 'Overview of the Winner\'s Circle Club concept and its potential impact on Milea Estate.',
-    'business-model': 'Detailed structure of the credit-based membership model and operational framework.',
-    'benefits': 'Comprehensive benefits package for Winner\'s Circle members and enhanced experiences.',
-    'implementation': 'Requirements and steps for implementing the Winner\'s Circle Club program.',
-    'financial': 'Financial projections, revenue impact, and ROI analysis for the new membership tier.',
-    'strategic': 'Strategic implications and competitive advantages of the Winner\'s Circle Club.',
-    'recommendations': 'Actionable recommendations for successful implementation and optimization.'
-  };
 
   // Data for quarterly revenue comparison chart
   const revenueComparisonData = [
