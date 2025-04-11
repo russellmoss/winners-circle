@@ -111,12 +111,6 @@ const Dashboard = () => {
     }
   ];
 
-  // Navigation handler
-  const handleNavClick = (section) => {
-    setActiveSection(section);
-    document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
-  };
-
   const handleLogout = async () => {
     try {
       await signOut(auth);
