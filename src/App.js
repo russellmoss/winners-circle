@@ -42,6 +42,7 @@ const Dashboard = () => {
   const [collapsedSections, setCollapsedSections] = useState({});
   const navigate = useNavigate();
   const auth = getAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Data for quarterly revenue comparison chart
   const revenueComparisonData = [
@@ -172,6 +173,15 @@ const Dashboard = () => {
     }));
   };
 
+  const handleSectionClick = (sectionId) => {
+    setActiveSection(sectionId);
+    setIsMobileMenuOpen(false); // Close mobile menu when a section is selected
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="min-h-screen bg-background" ref={mainRef}>
       {/* Progress Indicator */}
@@ -186,12 +196,21 @@ const Dashboard = () => {
             <FaWineGlass className="logo-icon" />
             <span>Winner's Circle Club</span>
           </div>
-          <nav className="nav-menu">
+          <button 
+            className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <nav className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
             {navItems.map(item => (
               <button
                 key={item.id}
                 className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleSectionClick(item.id)}
               >
                 {item.label}
               </button>
@@ -202,6 +221,13 @@ const Dashboard = () => {
           </button>
         </div>
       </header>
+
+      {isMobileMenuOpen && (
+        <div 
+          className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}
+          onClick={toggleMobileMenu}
+        />
+      )}
 
       {/* Hero Section */}
       <div className="relative">
