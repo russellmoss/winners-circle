@@ -47,15 +47,15 @@ const ImplementationVisuals = () => {
         <div className="highlights-title">Implementation Highlights</div>
         <div className="highlights-grid">
           <div className="highlight-item">
-            <div className="highlight-value">$395K-$525K</div>
+            <div className="highlight-value">$310K-$440K</div>
             <div className="highlight-label">Total first-year investment</div>
           </div>
           <div className="highlight-item">
-            <div className="highlight-value">$210K-$265K</div>
+            <div className="highlight-value">$187.5K</div>
             <div className="highlight-label">Annual operating costs</div>
           </div>
           <div className="highlight-item">
-            <div className="highlight-value">9-10 months</div>
+            <div className="highlight-value">18-20 months</div>
             <div className="highlight-label">Payback period</div>
           </div>
           <div className="highlight-item">

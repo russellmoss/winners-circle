@@ -57,7 +57,7 @@ const Dashboard = () => {
     { year: 1, directSpend: 128000, additionalSpend: 25600, accommodationSpend: 5760, total: 159360 },
     { year: 2, directSpend: 296000, additionalSpend: 59200, accommodationSpend: 13320, total: 368520 },
     { year: 3, directSpend: 438000, additionalSpend: 87600, accommodationSpend: 19800, total: 545400 },
-    { year: 4, directSpend: 562238, additionalSpend: 112447.60, accommodationSpend: 25380, total: 700065.60 }
+    { year: 4, directSpend: 562238, additionalSpend: 112448, accommodationSpend: 25380, total: 700066 }
   ];
 
   // Data for implementation costs
@@ -73,16 +73,16 @@ const Dashboard = () => {
     { year: 1, directMembership: 128000, beyondCredit: 25600, accommodation: 5760 },
     { year: 2, directMembership: 296000, beyondCredit: 59200, accommodation: 13320 },
     { year: 3, directMembership: 438000, beyondCredit: 87600, accommodation: 19800 },
-    { year: 4, directMembership: 562238, beyondCredit: 112447.60, accommodation: 25380 }
+    { year: 4, directMembership: 562238, beyondCredit: 112448, accommodation: 25380 }
   ];
 
   // Data for membership growth
   const membershipGrowthData = [
     { year: 0, total: 36, upgrades: 0, new: 0 },
     { year: 1, total: 64, upgrades: 24, new: 40 },
-    { year: 2, total: 148, upgrades: 38, new: 120 },
-    { year: 3, total: 220, upgrades: 52, new: 200 },
-    { year: 4, total: 281, upgrades: 66, new: 280 }
+    { year: 2, total: 148, upgrades: 38, new: 110 },
+    { year: 3, total: 220, upgrades: 52, new: 172 },
+    { year: 4, total: 281, upgrades: 66, new: 215 }
   ];
 
   // Colors for the pie chart
@@ -297,7 +297,7 @@ const Dashboard = () => {
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   <div className="insight-icon">📈</div>
-                  <div className="insight-value">142%</div>
+                  <div className="insight-value">37%</div>
                   <div className="insight-label">Annual Club Revenue</div>
                   <div className="insight-description">Increase in annual club revenue</div>
                 </motion.div>
@@ -309,7 +309,7 @@ const Dashboard = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
                   <div className="insight-icon">💎</div>
-                  <div className="insight-value">317%</div>
+                  <div className="insight-value">316%</div>
                   <div className="insight-label">Member Lifetime Value</div>
                   <div className="insight-description">Increase in member lifetime value</div>
                 </motion.div>
@@ -321,9 +321,9 @@ const Dashboard = () => {
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
                   <div className="insight-icon">💰</div>
-                  <div className="insight-value">33%</div>
+                  <div className="insight-value">-57%</div>
                   <div className="insight-label">First-Year ROI</div>
-                  <div className="insight-description">With 9-10 month payback period</div>
+                  <div className="insight-description">With 18-20 month payback period</div>
                 </motion.div>
                 
                 <motion.div
@@ -676,7 +676,7 @@ const Dashboard = () => {
                 </PieChart>
               </ResponsiveContainer>
               <p className="mt-4 text-sm text-gray-600">
-                Total first-year investment ranges from $310,000 to $440,000, with annual operating costs between $175,000 and $200,000.
+                Total first-year investment ranges from $310,000 to $440,000 (average: $375,000), with annual operating costs of $187,500.
               </p>
             </div>
           </div>
@@ -713,7 +713,7 @@ const Dashboard = () => {
                 <li><strong>Year 1</strong>: $128,000 direct spend + $25,600 additional spend + $5,760 accommodation = $159,360 total</li>
                 <li><strong>Year 2</strong>: $296,000 direct spend + $59,200 additional spend + $13,320 accommodation = $368,520 total</li>
                 <li><strong>Year 3</strong>: $438,000 direct spend + $87,600 additional spend + $19,800 accommodation = $545,400 total</li>
-                <li><strong>Year 4</strong>: $562,238 direct spend + $112,447.60 additional spend + $25,380 accommodation = $700,065.60 total</li>
+                <li><strong>Year 4</strong>: $562,238 direct spend + $112,448 additional spend + $25,380 accommodation = $700,066 total</li>
               </ul>
 
               <h4>Accommodation Revenue Calculation:</h4>
@@ -753,21 +753,21 @@ const Dashboard = () => {
                 <li><strong>Shared Club Manager</strong>: $85,000 annual salary (shared between Milea Estate and HV Vineyards)</li>
                 <li><strong>Ongoing Operations</strong>: $75,000-$100,000 annual operational expenses</li>
               </ul>
-              <p><strong>Total First-Year Investment</strong>: $310,000-$440,000<br />
-              <strong>Annual Operating Costs</strong>: $175,000-$200,000</p>
+              <p><strong>Total First-Year Investment</strong>: $310,000-$440,000 (average: $375,000)<br />
+              <strong>Annual Operating Costs</strong>: $187,500 (average of $175,000-$200,000)</p>
 
               <h3>Return on Investment</h3>
               <ul>
                 <li><strong>First-Year ROI</strong>: $159,360 revenue against $375,000 average investment = -57% ROI</li>
                 <li><strong>Year 2 ROI</strong>: $368,520 revenue against $187,500 average operating costs = 97% ROI</li>
                 <li><strong>Year 3 ROI</strong>: $545,400 revenue against $187,500 average operating costs = 191% ROI</li>
-                <li><strong>Year 4 ROI</strong>: $700,065.60 revenue against $187,500 average operating costs = 273% ROI</li>
+                <li><strong>Year 4 ROI</strong>: $700,066 revenue against $187,500 average operating costs = 273% ROI</li>
                 <li><strong>Payback Period</strong>: Approximately 18-20 months</li>
               </ul>
 
               <h3>Multi-Year Financial Impact</h3>
               <ul>
-                <li><strong>Total 4-Year Revenue</strong>: $1,773,345.60</li>
+                <li><strong>Total 4-Year Revenue</strong>: $1,773,346</li>
                 <li><strong>Total 4-Year Investment</strong>: $937,500 ($375,000 initial + $187,500 × 3 years operating)</li>
                 <li><strong>4-Year Cumulative ROI</strong>: 89%</li>
                 <li><strong>Average Annual Revenue Growth</strong>: 64%</li>
@@ -776,7 +776,7 @@ const Dashboard = () => {
                     <li>Year 1: $159,360 (9% of total)</li>
                     <li>Year 2: $368,520 (21% of total)</li>
                     <li>Year 3: $545,400 (31% of total)</li>
-                    <li>Year 4: $700,065.60 (39% of total)</li>
+                    <li>Year 4: $700,066 (39% of total)</li>
                   </ul>
                 </li>
               </ul>
