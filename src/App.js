@@ -167,13 +167,8 @@ const Dashboard = () => {
     }));
   };
 
-  const handleSectionClick = (sectionId) => {
-    setActiveSection(sectionId);
-    setIsMobileMenuOpen(false); // Close mobile menu when a section is selected
-  };
-
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen(prev => !prev);
     document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : 'auto';
   };
 
