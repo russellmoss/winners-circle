@@ -91,4 +91,40 @@
   border-radius: 6px;
   font-size: 14px;
   text-align: center;
+}
+
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #0369a1;
+}
+
+.password-toggle:focus {
+  outline: none;
+  color: #0369a1;
+}
+
+/* Update the password input to account for the toggle button */
+.password-input-container input[type="password"],
+.password-input-container input[type="text"] {
+  padding-right: 40px;
 } 
