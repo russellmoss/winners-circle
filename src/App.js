@@ -182,6 +182,10 @@ const Dashboard = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-background" ref={mainRef}>
       {/* Progress Indicator */}
@@ -225,7 +229,7 @@ const Dashboard = () => {
       {isMobileMenuOpen && (
         <div 
           className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}
-          onClick={toggleMobileMenu}
+          onClick={closeMobileMenu}
         />
       )}
 
