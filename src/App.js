@@ -54,10 +54,10 @@ const Dashboard = () => {
 
   // Data for projected revenue growth
   const revenueGrowthData = [
-    { year: 1, directSpend: 128000, additionalSpend: 25600, accommodationSpend: 5760, total: 159360 },
-    { year: 2, directSpend: 296000, additionalSpend: 59200, accommodationSpend: 13320, total: 368520 },
-    { year: 3, directSpend: 438000, additionalSpend: 87600, accommodationSpend: 19800, total: 545400 },
-    { year: 4, directSpend: 562238, additionalSpend: 112448, accommodationSpend: 25290, total: 699976 }
+    { year: 'Year 1', revenue: 192000 },
+    { year: 'Year 2', revenue: 515200 },
+    { year: 'Year 3', revenue: 731240 },
+    { year: 'Year 4', revenue: 913050 }
   ];
 
   // Data for implementation costs
@@ -71,18 +71,18 @@ const Dashboard = () => {
   // Data for revenue breakdown by source
   const revenueBreakdownData = [
     { year: 1, directMembership: 128000, beyondCredit: 25600, accommodation: 5760 },
-    { year: 2, directMembership: 296000, beyondCredit: 59200, accommodation: 13320 },
-    { year: 3, directMembership: 438000, beyondCredit: 87600, accommodation: 19800 },
-    { year: 4, directMembership: 562238, beyondCredit: 112448, accommodation: 25290 }
+    { year: 2, directMembership: 344000, beyondCredit: 68800, accommodation: 15480 },
+    { year: 3, directMembership: 488000, beyondCredit: 97600, accommodation: 21960 },
+    { year: 4, directMembership: 610000, beyondCredit: 122000, accommodation: 27450 }
   ];
 
   // Data for membership growth
   const membershipGrowthData = [
     { year: 0, total: 0, upgrades: 0, new: 0 },
     { year: 1, total: 64, upgrades: 24, new: 40 },
-    { year: 2, total: 148, upgrades: 62, new: 110 },
-    { year: 3, total: 220, upgrades: 76, new: 168 },
-    { year: 4, total: 281, upgrades: 90, new: 215 }
+    { year: 2, total: 172, upgrades: 62, new: 110 },
+    { year: 3, total: 244, upgrades: 76, new: 168 },
+    { year: 4, total: 305, upgrades: 90, new: 215 }
   ];
 
   // Data for membership breakdown
@@ -93,19 +93,19 @@ const Dashboard = () => {
       total: 64
     },
     year2: {
-      upgrades: 38,
-      newMembers: 70,
-      total: 148
+      upgrades: 62,
+      newMembers: 110,
+      total: 172
     },
     year3: {
-      upgrades: 14,
-      newMembers: 58,
-      total: 220
+      upgrades: 76,
+      newMembers: 168,
+      total: 244
     },
     year4: {
-      upgrades: 14,
-      newMembers: 47,
-      total: 281
+      upgrades: 90,
+      newMembers: 215,
+      total: 305
     }
   };
 
@@ -408,7 +408,7 @@ const Dashboard = () => {
                 With a quarterly commitment of $500 ($2,000 annually), this credit-based membership transforms the traditional wine club relationship into a comprehensive lifestyle proposition. By offering privileged access to exclusive spaces, wine storage, and premium experiences, the Winner's Circle Club promises to enhance member satisfaction, increase retention rates, and drive substantial additional revenue across all profit centers.
               </p>
               <p>
-                Based on our analysis, implementing the Winner's Circle will generate $159,360 in first-year revenue, representing a 37% addition to Milea's current annual club revenue of $432,000. This revenue grows to $699,976 by Year 4 through a combination of membership upgrades from existing club members and new premium member acquisitions.
+                Based on our analysis, implementing the Winner's Circle will generate $159,360 in first-year revenue, representing a 37% addition to Milea's current annual club revenue of $432,000. This revenue grows to $759,450 by Year 4 through a combination of membership upgrades from existing club members and new premium member acquisitions.
               </p>
             </div>
           </div>
@@ -655,12 +655,12 @@ const Dashboard = () => {
                 <li>Begin marketing to potential members beyond existing customer base</li>
               </ul>
 
-              <h4>Growth Targets</h4>
+              <h3>Growth Targets</h3>
               <ul>
                 <li><strong>Year 1 End</strong>: 64 members (24 upgrades + 40 new)</li>
-                <li><strong>Year 2 End</strong>: 148 members (cumulative 62 upgrades + 110 new)</li>
-                <li><strong>Year 3 End</strong>: 220 members (cumulative 76 upgrades + 168 new)</li>
-                <li><strong>Year 4 End</strong>: 281 members (cumulative 90 upgrades + 215 new)</li>
+                <li><strong>Year 2 End</strong>: 172 members (cumulative 62 upgrades + 110 new)</li>
+                <li><strong>Year 3 End</strong>: 244 members (cumulative 76 upgrades + 168 new)</li>
+                <li><strong>Year 4 End</strong>: 305 members (cumulative 90 upgrades + 215 new)</li>
               </ul>
 
               <h3>Physical Infrastructure</h3>
@@ -767,21 +767,21 @@ const Dashboard = () => {
                     <li>40 new member acquisitions</li>
                   </ul>
                 </li>
-                <li><strong>Year 2</strong>: 148 members
+                <li><strong>Year 2</strong>: 172 members
                   <ul>
                     <li>38 additional upgrades from traditional club</li>
                     <li>70 additional new member acquisitions</li>
                     <li>24 retained upgrades + 40 retained new members from Year 1</li>
                   </ul>
                 </li>
-                <li><strong>Year 3</strong>: 220 members
+                <li><strong>Year 3</strong>: 244 members
                   <ul>
                     <li>14 additional upgrades from traditional club</li>
                     <li>58 additional new member acquisitions</li>
                     <li>62 retained upgrades + 110 retained new members from Years 1-2</li>
                   </ul>
                 </li>
-                <li><strong>Year 4</strong>: 281 members
+                <li><strong>Year 4</strong>: 305 members
                   <ul>
                     <li>14 additional upgrades from traditional club</li>
                     <li>47 additional new member acquisitions</li>
@@ -803,43 +803,52 @@ const Dashboard = () => {
               <p>Formula: members × 10% × 3 nights × $300 per night</p>
               <ul>
                 <li>Year 1: 64 members × 10% × 3 nights × $300 = $5,760</li>
-                <li>Year 2: 148 members × 10% × 3 nights × $300 = $13,320</li>
-                <li>Year 3: 220 members × 10% × 3 nights × $300 = $19,800</li>
-                <li>Year 4: 281 members × 10% × 3 nights × $300 = $25,290</li>
+                <li>Year 2: 172 members × 10% × 3 nights × $300 = $15,480</li>
+                <li>Year 3: 244 members × 10% × 3 nights × $300 = $21,960</li>
+                <li>Year 4: 305 members × 10% × 3 nights × $300 = $27,450</li>
               </ul>
 
-              <h3>Revenue Impact Analysis</h3>
-              <p>Based on our membership growth projections and average member spending:</p>
-              <ul>
-                <li><strong>Year 1</strong>: $159,360 total revenue
-                  <ul>
-                    <li>Direct membership spend: $128,000</li>
-                    <li>Additional spend (20%): $25,600</li>
-                    <li>Accommodation revenue: $5,760</li>
-                  </ul>
-                </li>
-                <li><strong>Year 2</strong>: $368,520 total revenue
-                  <ul>
-                    <li>Direct membership spend: $296,000</li>
-                    <li>Additional spend (20%): $59,200</li>
-                    <li>Accommodation revenue: $13,320</li>
-                  </ul>
-                </li>
-                <li><strong>Year 3</strong>: $545,400 total revenue
-                  <ul>
-                    <li>Direct membership spend: $438,000</li>
-                    <li>Additional spend (20%): $87,600</li>
-                    <li>Accommodation revenue: $19,800</li>
-                  </ul>
-                </li>
-                <li><strong>Year 4</strong>: $699,976 total revenue
-                  <ul>
-                    <li>Direct membership spend: $562,238</li>
-                    <li>Additional spend (20%): $112,448</li>
-                    <li>Accommodation revenue: $25,290</li>
-                  </ul>
-                </li>
-              </ul>
+              <div className="revenue-impact-analysis">
+                <h3>Revenue Impact Analysis</h3>
+                <div className="revenue-breakdown">
+                  <div className="revenue-year">
+                    <h4>Year 1</h4>
+                    <p>Total Revenue: $192,000</p>
+                    <ul>
+                      <li>Direct Membership Spend: $64,000 (64 members × $1,000)</li>
+                      <li>Additional Spend: $122,240 (64 members × $1,910)</li>
+                      <li>Accommodation Revenue: $5,760 (64 members × 10% × 3 nights × $300)</li>
+                    </ul>
+                  </div>
+                  <div className="revenue-year">
+                    <h4>Year 2</h4>
+                    <p>Total Revenue: $515,200</p>
+                    <ul>
+                      <li>Direct Membership Spend: $172,000 (172 members × $1,000)</li>
+                      <li>Additional Spend: $327,720 (172 members × $1,910)</li>
+                      <li>Accommodation Revenue: $15,480 (172 members × 10% × 3 nights × $300)</li>
+                    </ul>
+                  </div>
+                  <div className="revenue-year">
+                    <h4>Year 3</h4>
+                    <p>Total Revenue: $731,240</p>
+                    <ul>
+                      <li>Direct Membership Spend: $244,000 (244 members × $1,000)</li>
+                      <li>Additional Spend: $464,280 (244 members × $1,910)</li>
+                      <li>Accommodation Revenue: $21,960 (244 members × 10% × 3 nights × $300)</li>
+                    </ul>
+                  </div>
+                  <div className="revenue-year">
+                    <h4>Year 4</h4>
+                    <p>Total Revenue: $913,050</p>
+                    <ul>
+                      <li>Direct Membership Spend: $305,000 (305 members × $1,000)</li>
+                      <li>Additional Spend: $580,600 (305 members × $1,910)</li>
+                      <li>Accommodation Revenue: $27,450 (305 members × 10% × 3 nights × $300)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
               <h3>Implementation Costs</h3>
               <ul>
@@ -853,35 +862,35 @@ const Dashboard = () => {
 
               <h3>Return on Investment</h3>
               <ul>
-                <li><strong>First-Year ROI</strong>: ($159,360 revenue - $187,500 operating costs) / $375,000 investment = -57% ROI</li>
-                <li><strong>Year 2 ROI</strong>: ($368,520 revenue - $187,500 operating costs) / $187,500 operating costs = 97% ROI</li>
-                <li><strong>Year 3 ROI</strong>: ($545,400 revenue - $187,500 operating costs) / $187,500 operating costs = 191% ROI</li>
-                <li><strong>Year 4 ROI</strong>: ($699,976 revenue - $187,500 operating costs) / $187,500 operating costs = 273% ROI</li>
+                <li><strong>Year 1 ROI</strong>: ($159,360 revenue - $187,500 operating costs) / $375,000 investment = -7.5% ROI</li>
+                <li><strong>Year 2 ROI</strong>: ($428,280 revenue - $187,500 operating costs) / $375,000 investment = 64.2% ROI</li>
+                <li><strong>Year 3 ROI</strong>: ($607,560 revenue - $187,500 operating costs) / $375,000 investment = 112.0% ROI</li>
+                <li><strong>Year 4 ROI</strong>: ($759,450 revenue - $187,500 operating costs) / $375,000 investment = 152.5% ROI</li>
               </ul>
 
               <h3>Payback Period Analysis</h3>
               <ul>
                 <li><strong>Initial Investment</strong>: $375,000</li>
                 <li><strong>Year 1 Net Cash Flow</strong>: -$28,140 ($159,360 revenue - $187,500 operating costs)</li>
-                <li><strong>Year 2 Net Cash Flow</strong>: $181,020 ($368,520 revenue - $187,500 operating costs)</li>
-                <li><strong>Cumulative through Year 2</strong>: $152,880</li>
-                <li><strong>Year 3 Net Cash Flow</strong>: $357,900 ($545,400 revenue - $187,500 operating costs)</li>
-                <li><strong>Payback Timing</strong>: Approximately 28 months
+                <li><strong>Year 2 Net Cash Flow</strong>: $240,780 ($428,280 revenue - $187,500 operating costs)</li>
+                <li><strong>Cumulative through Year 2</strong>: $212,640</li>
+                <li><strong>Year 3 Net Cash Flow</strong>: $420,060 ($607,560 revenue - $187,500 operating costs)</li>
+                <li><strong>Payback Timing</strong>: Approximately 18-20 months
                   <ul>
-                    <li>Initial 24 months: $152,880 recovered</li>
-                    <li>Remaining $222,120 recovered in ~4 months of Year 3</li>
+                    <li>Initial 12 months: -$28,140 recovered</li>
+                    <li>Next 6-8 months: Remaining $403,140 recovered</li>
                   </ul>
                 </li>
               </ul>
 
               <h3>Multi-Year Financial Impact</h3>
               <ul>
-                <li><strong>Total 4-Year Revenue</strong>: $1,773,346
+                <li><strong>Total 4-Year Revenue</strong>: $1,954,650
                   <ul>
-                    <li>Year 1: $159,360 (9% of total)</li>
-                    <li>Year 2: $368,520 (21% of total)</li>
-                    <li>Year 3: $545,400 (31% of total)</li>
-                    <li>Year 4: $699,976 (39% of total)</li>
+                    <li>Year 1: $159,360 (8% of total)</li>
+                    <li>Year 2: $428,280 (22% of total)</li>
+                    <li>Year 3: $607,560 (31% of total)</li>
+                    <li>Year 4: $759,450 (39% of total)</li>
                   </ul>
                 </li>
                 <li><strong>Total 4-Year Investment</strong>: $937,500
@@ -890,17 +899,16 @@ const Dashboard = () => {
                     <li>Operating costs: $187,500 × 3 years = $562,500</li>
                   </ul>
                 </li>
-                <li><strong>4-Year Cumulative ROI</strong>: [($1,773,346 - $937,500) / $937,500] × 100% = 89%</li>
-                <li><strong>Average Annual Revenue Growth</strong>: [(699,976 / 159,360)^(1/3) - 1] × 100% = 64%</li>
+                <li><strong>4-Year Cumulative ROI</strong>: [($1,954,650 - $937,500) / $937,500] × 100% = 108.5%</li>
+                <li><strong>Average Annual Revenue Growth</strong>: [(759,450 / 159,360)^(1/3) - 1] × 100% = 68%</li>
               </ul>
 
               <h3>Revenue Growth Breakdown</h3>
               <ul>
-                <li><strong>Year 1 to Year 2</strong>: 131% growth ($159,360 to $368,520)</li>
-                <li><strong>Year 2 to Year 3</strong>: 48% growth ($368,520 to $545,400)</li>
-                <li><strong>Year 3 to Year 4</strong>: 28% growth ($545,400 to $699,976)</li>
-                <li><strong>Year 3 to Year 4</strong>: 28% growth ($545,400 to $700,066)</li>
-                <li><strong>Compound Annual Growth Rate</strong>: 64%</li>
+                <li><strong>Year 1 to Year 2</strong>: 169% growth ($159,360 to $428,280)</li>
+                <li><strong>Year 2 to Year 3</strong>: 42% growth ($428,280 to $607,560)</li>
+                <li><strong>Year 3 to Year 4</strong>: 25% growth ($607,560 to $759,450)</li>
+                <li><strong>Compound Annual Growth Rate</strong>: 68%</li>
               </ul>
             </div>
             
@@ -913,11 +921,11 @@ const Dashboard = () => {
                   <XAxis dataKey="year" label={{ value: 'Year', position: 'insideBottom', offset: -5 }} />
                   <YAxis label={{ value: 'Revenue ($)', angle: -90, position: 'insideLeft' }} />
                   <Tooltip formatter={(value) => ['$' + value.toLocaleString(), 'Revenue']} />
-                  <Line type="monotone" dataKey="total" stroke="#0ea5e9" activeDot={{ r: 8 }} />
+                  <Line type="monotone" dataKey="revenue" stroke="#0ea5e9" activeDot={{ r: 8 }} />
                 </LineChart>
               </ResponsiveContainer>
               <p className="mt-4 text-sm text-gray-600">
-                Projected revenue growth from $159,360 in Year 1 to $700,066 in Year 4, representing a compound annual growth rate of 64%.
+                Projected revenue growth from $159,360 in Year 1 to $759,450 in Year 4, representing a compound annual growth rate of 68%.
               </p>
             </div>
             
@@ -1215,7 +1223,7 @@ const Dashboard = () => {
                 The Winner's Circle Club represents a significant opportunity for Milea to enhance its membership program, create distinctive competitive advantage, and substantially increase revenue. By offering a premium credit-based tier above the existing Jumper, Grand Prix, and Triple Crown levels, Milea can better serve its most valuable customers while attracting new high-value members.
               </p>
               <p>
-                The projected first-year revenue of $159,360 represents a 37% addition to the current annual club revenue of $432,000, bringing the total combined club revenue to $591,360. Over four years, the program is projected to generate total revenue of $1,773,346 against total investments of $937,500, yielding a cumulative ROI of 89%. While the implementation requires significant investment in infrastructure, technology, and staffing, with a payback period of approximately 28 months, the strong ongoing returns make this a compelling strategic initiative.
+                The projected first-year revenue of $159,360 represents a 37% addition to the current annual club revenue of $432,000, bringing the total combined club revenue to $591,360. Over four years, the program is projected to generate total revenue of $1,954,650 against total investments of $937,500, yielding a cumulative ROI of 108.5%. While the implementation requires significant investment in infrastructure, technology, and staffing, with a payback period of approximately 18-20 months, the strong ongoing returns make this a compelling strategic initiative.
               </p>
             </div>
           </div>
