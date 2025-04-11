@@ -368,19 +368,13 @@ tr:hover {
     margin: 1rem 0;
   }
   
-  nav {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
   .nav-container {
     flex-direction: column;
     gap: 1rem;
   }
   
   .nav-links {
-    flex-direction: column;
-    width: 100%;
+    display: none; /* Hide desktop navigation on mobile */
   }
   
   .nav-item {
@@ -398,320 +392,65 @@ tr:hover {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-}
-
-/* Pull Quotes */
-.pull-quote {
-  font-style: italic;
-  font-size: 1.25rem;
-  color: #0369a1;
-  border-left: 4px solid #0369a1;
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-  background-color: #f0f9ff;
-  position: relative;
-}
-
-.pull-quote::before {
-  content: '"';
-  position: absolute;
-  top: -0.5rem;
-  left: 0.5rem;
-  font-size: 3rem;
-  color: #0369a1;
-  opacity: 0.2;
-  font-family: serif;
-}
-
-.pull-quote::after {
-  content: '"';
-  position: absolute;
-  bottom: -1.5rem;
-  right: 0.5rem;
-  font-size: 3rem;
-  color: #0369a1;
-  opacity: 0.2;
-  font-family: serif;
-}
-
-/* Key Takeaways Boxes */
-.key-takeaway {
-  background: linear-gradient(to right, #f0f9ff, #e0f2fe);
-  border-left: 4px solid #0369a1;
-  padding: 1.25rem;
-  margin: 1.5rem 0;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.key-takeaway::before {
-  content: 'Key Takeaway';
-  display: block;
-  font-weight: 600;
-  color: #0369a1;
-  margin-bottom: 0.75rem;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.key-takeaway h3 {
-  color: #0369a1;
-  margin-bottom: 0.75rem;
-  font-size: 1.125rem;
-}
-
-.key-takeaway ul {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.key-takeaway li {
-  margin-bottom: 0.5rem;
-}
-
-.key-takeaway li:last-child {
-  margin-bottom: 0;
-}
-
-/* Infographic Elements */
-.infographic {
-  background-color: #f8fafc;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.infographic-title {
-  text-align: center;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #0369a1;
-  margin-bottom: 1.25rem;
-}
-
-.infographic-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
-}
-
-.infographic-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
-
-.infographic-item:hover {
-  transform: translateY(-5px);
-}
-
-.infographic-icon {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e0f2fe;
-  color: #0369a1;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.infographic-label {
-  font-weight: 600;
-  color: #0369a1;
-  margin-bottom: 0.5rem;
-}
-
-.infographic-value {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #0369a1;
-  margin-bottom: 0.5rem;
-}
-
-.infographic-description {
-  font-size: 0.875rem;
-  color: #64748b;
-}
-
-/* Timeline */
-.timeline {
-  position: relative;
-  padding: 2rem 0;
-  margin: 2rem 0;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 100%;
-  background-color: #e0f2fe;
-  border-radius: 2px;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 2rem;
-  width: 100%;
-}
-
-.timeline-item:nth-child(even) {
-  margin-left: 50%;
-  padding-left: 2rem;
-}
-
-.timeline-content {
-  background-color: white;
-  padding: 1.25rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: relative;
-  width: calc(100% - 2rem);
-}
-
-.timeline-content::before {
-  content: '';
-  position: absolute;
-  top: 1.25rem;
-  left: -1rem;
-  width: 1rem;
-  height: 1rem;
-  background-color: #0369a1;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 0 0 2px #0369a1;
-}
-
-.timeline-item:nth-child(even) .timeline-content::before {
-  left: auto;
-  right: -1rem;
-}
-
-.timeline-date {
-  font-weight: 600;
-  color: #0369a1;
-  margin-bottom: 0.5rem;
-}
-
-.timeline-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.timeline-description {
-  color: #64748b;
-  font-size: 0.875rem;
-}
-
-/* Comparison Table */
-.comparison-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 1.5rem 0;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.comparison-table th {
-  background-color: #0369a1;
-  color: white;
-  font-weight: 600;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  font-size: 0.875rem;
-}
-
-.comparison-table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e2e8f0;
-  font-size: 0.875rem;
-}
-
-.comparison-table tr:last-child td {
-  border-bottom: none;
-}
-
-.comparison-table tr:hover td {
-  background-color: #f1f5f9;
-}
-
-.comparison-table .highlight {
-  font-weight: 600;
-  color: #0369a1;
-}
-
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-  .App {
-    padding: 0.75rem;
-  }
   
-  section {
-    padding: 1.25rem;
-    margin: 1rem 0;
-  }
-  
-  section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .header-content {
-    padding: 0.5rem 0.75rem;
-  }
-  
-  .logo {
-    font-size: 1rem;
+  /* Mobile Menu Styles */
+  .mobile-menu-toggle {
+    display: block;
   }
   
   .nav-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
     background: white;
     flex-direction: column;
-    padding: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 80px 20px 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
   }
   
   .nav-menu.active {
-    display: flex;
+    right: 0;
   }
   
   .nav-item {
     width: 100%;
     text-align: left;
-    padding: 0.75rem 1rem;
-  }
-  
-  .mobile-menu-toggle {
-    display: block;
-    background: none;
-    border: none;
+    padding: 12px 16px;
     color: #0369a1;
-    font-size: 1.5rem;
-    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
   
+  .nav-item:hover,
+  .nav-item.active {
+    background: #f1f5f9;
+  }
+  
+  .mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .mobile-menu-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+  
+  /* Mobile-specific content adjustments */
   .pull-quote {
     font-size: 1.125rem;
     padding: 1rem;
@@ -1065,13 +804,14 @@ tr:hover {
   cursor: pointer;
   padding: 10px;
   z-index: 1001;
+  position: relative;
 }
 
 .hamburger {
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--text-color);
+  background: #0369a1;
   position: relative;
   transition: all 0.3s ease;
 }
@@ -1082,7 +822,7 @@ tr:hover {
   position: absolute;
   width: 24px;
   height: 2px;
-  background: var(--text-color);
+  background: #0369a1;
   transition: all 0.3s ease;
 }
 
@@ -1094,16 +834,16 @@ tr:hover {
   bottom: -8px;
 }
 
-.hamburger.active {
+.mobile-menu-toggle.active .hamburger {
   background: transparent;
 }
 
-.hamburger.active::before {
+.mobile-menu-toggle.active .hamburger::before {
   transform: rotate(45deg);
   top: 0;
 }
 
-.hamburger.active::after {
+.mobile-menu-toggle.active .hamburger::after {
   transform: rotate(-45deg);
   bottom: 0;
 }
@@ -1161,6 +901,7 @@ tr:hover {
     transition: right 0.3s ease;
     z-index: 1000;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
   }
 
   .nav-menu.active {
@@ -1172,6 +913,8 @@ tr:hover {
     text-align: left;
     padding: 12px 16px;
     color: #0369a1;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .nav-item:hover,
@@ -1180,11 +923,20 @@ tr:hover {
   }
 
   .mobile-menu-overlay {
-    display: block;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .mobile-menu-overlay.active {
     display: block;
+    opacity: 1;
   }
 } 

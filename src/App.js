@@ -163,8 +163,7 @@ const Dashboard = () => {
     // Close mobile menu when clicking outside
     const handleClickOutside = (event) => {
       if (isMobileMenuOpen && !event.target.closest('.nav-menu') && !event.target.closest('.mobile-menu-toggle')) {
-        setIsMobileMenuOpen(false);
-        document.body.style.overflow = 'auto';
+        closeMobileMenu();
       }
     };
 
@@ -190,6 +189,11 @@ const Dashboard = () => {
     document.body.style.overflow = 'auto';
   };
 
+  const handleNavClick = (sectionId) => {
+    setActiveSection(sectionId);
+    closeMobileMenu();
+  };
+
   return (
     <div className="min-h-screen bg-background" ref={mainRef}>
       {/* Progress Indicator */}
@@ -205,11 +209,11 @@ const Dashboard = () => {
             <span>Winner's Circle Club</span>
           </div>
           <button 
-            className="mobile-menu-toggle" 
+            className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
-            <span className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}></span>
+            <span className="hamburger"></span>
           </button>
           <nav className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
             {navItems.map((item) => (
@@ -217,7 +221,7 @@ const Dashboard = () => {
                 key={item.id}
                 href={`#${item.id}`}
                 className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
-                onClick={closeMobileMenu}
+                onClick={() => handleNavClick(item.id)}
               >
                 {item.label}
               </a>
