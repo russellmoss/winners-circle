@@ -5,7 +5,9 @@ import { LineChart, Line, CartesianGrid } from 'recharts';
 import { FaChartLine, FaUsers, FaDollarSign, FaTrophy, FaCalendarAlt, FaChartPie, FaLightbulb, FaChevronDown, FaWineGlass, FaTools } from 'react-icons/fa';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import Login from './Login';
+import ImplementationVisuals from './ImplementationVisuals';
 import './App.css';
+import { motion } from 'framer-motion';
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -268,78 +270,106 @@ const Dashboard = () => {
           </div>
           
           <div className={`section-content ${collapsedSections['executive-summary'] ? 'collapsed' : ''}`}>
-            {/* Add key takeaways box */}
-            <div className="key-takeaway">
-              <h3>Key Insights</h3>
-              <ul>
-                <li>142% increase in annual club revenue</li>
-                <li>317% increase in member lifetime value</li>
-                <li>33% first-year ROI with 9-10 month payback period</li>
-                <li>Enhanced member retention and satisfaction</li>
-              </ul>
-            </div>
+            {/* Key Insights Section */}
+            <motion.div 
+              className="insights-section"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                Key Insights
+              </motion.h2>
+              
+              <div className="insights-container">
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  <div className="insight-icon">📈</div>
+                  <div className="insight-value">142%</div>
+                  <div className="insight-label">Annual Club Revenue</div>
+                  <div className="insight-description">Increase in annual club revenue</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <div className="insight-icon">💎</div>
+                  <div className="insight-value">317%</div>
+                  <div className="insight-label">Member Lifetime Value</div>
+                  <div className="insight-description">Increase in member lifetime value</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <div className="insight-icon">💰</div>
+                  <div className="insight-value">33%</div>
+                  <div className="insight-label">First-Year ROI</div>
+                  <div className="insight-description">With 9-10 month payback period</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <div className="insight-icon">⭐</div>
+                  <div className="insight-value">Enhanced</div>
+                  <div className="insight-label">Member Experience</div>
+                  <div className="insight-description">Improved retention and satisfaction</div>
+                </motion.div>
+              </div>
+            </motion.div>
             
             {/* Add infographic */}
             <div className="infographic">
-              <div className="infographic-title">Revenue Impact Overview</div>
+              <div className="infographic-title">Strategic Benefits</div>
               <div className="infographic-container">
                 <div className="infographic-item">
                   <div className="infographic-icon">
-                    <FaDollarSign />
+                    <FaTrophy />
                   </div>
-                  <div className="infographic-label">Annual Revenue</div>
-                  <div className="infographic-value">$612K</div>
-                  <div className="infographic-description">Incremental revenue from Winner's Circle</div>
+                  <div className="infographic-label">Market Position</div>
+                  <div className="infographic-description">Premium tier differentiation</div>
                 </div>
                 <div className="infographic-item">
                   <div className="infographic-icon">
-                    <FaUsers />
+                    <FaCalendarAlt />
                   </div>
-                  <div className="infographic-label">Member Value</div>
-                  <div className="infographic-value">$8K</div>
-                  <div className="infographic-description">Lifetime value per member</div>
+                  <div className="infographic-label">Visit Frequency</div>
+                  <div className="infographic-description">Increased member visits</div>
                 </div>
                 <div className="infographic-item">
                   <div className="infographic-icon">
-                    <FaChartLine />
+                    <FaChartPie />
                   </div>
-                  <div className="infographic-label">ROI</div>
-                  <div className="infographic-value">33%</div>
-                  <div className="infographic-description">First-year return on investment</div>
+                  <div className="infographic-label">Revenue Mix</div>
+                  <div className="infographic-description">Diversified income streams</div>
+                </div>
+                <div className="infographic-item">
+                  <div className="infographic-icon">
+                    <FaLightbulb />
+                  </div>
+                  <div className="infographic-label">Brand Elevation</div>
+                  <div className="infographic-description">Enhanced perception</div>
                 </div>
               </div>
-            </div>
-            
-            <div className="prose prose-lg max-w-none text-darkBrown">
-              <p>
-                This analysis examines the structure, benefits, and potential financial impact of implementing the Winner's Circle Club as Milea Estate's ultra-premium membership tier. Positioned above the existing Jumper, Grand Prix, and Triple Crown tiers, the Winner's Circle represents a significant evolution in Milea's membership strategy that emphasizes flexibility, exclusivity, and enhanced experiences beyond traditional wine allocations.
-              </p>
-              <p>
-                With a quarterly commitment of $500 ($2,000 annually), this credit-based membership transforms the traditional wine club relationship into a comprehensive lifestyle proposition. By offering privileged access to exclusive spaces, wine storage, and premium experiences, the Winner's Circle Club promises to enhance member satisfaction, increase retention rates, and drive substantial additional revenue across all profit centers.
-              </p>
-              <p>
-                Based on our analysis, implementing the Winner's Circle could generate approximately $612,000 in annual incremental revenue through a combination of membership upgrades from existing club members and new premium member acquisitions. This represents a significant enhancement to Milea's current club revenue of approximately $432,000 annually.
-              </p>
-            </div>
-            
-            {/* Revenue Comparison Chart */}
-            <div className="mt-12 bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold text-darkBrown mb-4">Quarterly Revenue Comparison</h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart
-                  data={revenueComparisonData}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis label={{ value: 'Quarterly Revenue ($)', angle: -90, position: 'insideLeft' }} />
-                  <Tooltip formatter={(value) => ['$' + value, 'Quarterly Revenue']} />
-                  <Bar dataKey="revenue" fill="#0ea5e9" />
-                </BarChart>
-              </ResponsiveContainer>
-              <p className="mt-4 text-sm text-gray-600">
-                The Winner's Circle Club generates $500 in quarterly revenue per member compared to $180 for the traditional wine club tiers.
-              </p>
             </div>
           </div>
         </section>
@@ -539,43 +569,24 @@ const Dashboard = () => {
           </div>
           
           <div className={`section-content ${collapsedSections['implementation'] ? 'collapsed' : ''}`}>
-            {/* Add timeline infographic */}
-            <div className="timeline">
-              <div className="timeline-item">
-                <div className="timeline-content">
-                  <div className="timeline-date">Months 1-3</div>
-                  <div className="timeline-title">Preparation Phase</div>
-                  <div className="timeline-description">Finalize membership structure, develop technology requirements, design physical spaces</div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <div className="timeline-content">
-                  <div className="timeline-date">Months 4-6</div>
-                  <div className="timeline-title">Soft Launch</div>
-                  <div className="timeline-description">Invite select members, complete renovations, launch basic program</div>
-                </div>
-              </div>
-              <div className="timeline-item">
-                <div className="timeline-content">
-                  <div className="timeline-date">Months 7-12</div>
-                  <div className="timeline-title">Full Implementation</div>
-                  <div className="timeline-description">Open general enrollment, complete infrastructure, expand staffing</div>
-                </div>
-              </div>
+            <div className="prose prose-lg max-w-none text-darkBrown">
+              <p>
+                The implementation of the Winner's Circle program will follow a phased approach to ensure a smooth transition and minimize disruption to existing operations. This section outlines the timeline, resource requirements, and key milestones for successful execution.
+              </p>
             </div>
             
-            {/* Add key takeaways box */}
-            <div className="key-takeaway">
-              <h3>Implementation Highlights</h3>
-              <ul>
-                <li>Total first-year investment: $395,000-$525,000</li>
-                <li>Annual operating costs: $210,000-$265,000</li>
-                <li>9-10 month payback period</li>
-                <li>Phased approach to minimize disruption</li>
-              </ul>
-            </div>
+            {/* Implementation Visuals Component */}
+            <ImplementationVisuals />
             
             <div className="prose prose-lg max-w-none text-darkBrown">
+              <p>
+                The phased implementation approach allows for iterative testing and refinement of the program before full-scale rollout. This minimizes risk and ensures that member feedback is incorporated throughout the development process.
+              </p>
+              
+              <p>
+                Key success factors include clear communication with existing members, training of staff on new processes, and careful management of the transition period. Regular progress reviews and adjustments to the implementation plan will be conducted as needed.
+              </p>
+              
               <h3>Physical Infrastructure</h3>
               
               <h4>Club Lounge</h4>
@@ -794,40 +805,80 @@ const Dashboard = () => {
               "The Winner's Circle positions Milea uniquely in the Hudson Valley wine region, creating competitive differentiation and transforming the winery from a tasting visit to a lifestyle destination."
             </div>
             
-            {/* Add infographic */}
-            <div className="infographic">
-              <div className="infographic-title">Strategic Benefits</div>
-              <div className="infographic-container">
-                <div className="infographic-item">
-                  <div className="infographic-icon">
+            {/* Strategic Benefits Infographic */}
+            <motion.div 
+              className="insights-section"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                Strategic Benefits
+              </motion.h2>
+              
+              <div className="insights-container">
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  <div className="insight-icon">
                     <FaTrophy />
                   </div>
-                  <div className="infographic-label">Market Position</div>
-                  <div className="infographic-description">Premium tier differentiation</div>
-                </div>
-                <div className="infographic-item">
-                  <div className="infographic-icon">
+                  <div className="insight-value">Premium</div>
+                  <div className="insight-label">Market Position</div>
+                  <div className="insight-description">Premium tier differentiation</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <div className="insight-icon">
                     <FaCalendarAlt />
                   </div>
-                  <div className="infographic-label">Visit Frequency</div>
-                  <div className="infographic-description">Increased member visits</div>
-                </div>
-                <div className="infographic-item">
-                  <div className="infographic-icon">
+                  <div className="insight-value">Increased</div>
+                  <div className="insight-label">Visit Frequency</div>
+                  <div className="insight-description">Increased member visits</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <div className="insight-icon">
                     <FaChartPie />
                   </div>
-                  <div className="infographic-label">Revenue Mix</div>
-                  <div className="infographic-description">Diversified income streams</div>
-                </div>
-                <div className="infographic-item">
-                  <div className="infographic-icon">
+                  <div className="insight-value">Diversified</div>
+                  <div className="insight-label">Revenue Mix</div>
+                  <div className="insight-description">Diversified income streams</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <div className="insight-icon">
                     <FaLightbulb />
                   </div>
-                  <div className="infographic-label">Brand Elevation</div>
-                  <div className="infographic-description">Enhanced perception</div>
-                </div>
+                  <div className="insight-value">Enhanced</div>
+                  <div className="insight-label">Brand Elevation</div>
+                  <div className="insight-description">Enhanced perception</div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
             
             <div className="prose prose-lg max-w-none text-darkBrown">
               <h3>Existing Club Optimization</h3>
@@ -881,19 +932,122 @@ const Dashboard = () => {
           </div>
           
           <div className={`section-content ${collapsedSections['recommendations'] ? 'collapsed' : ''}`}>
-            {/* Add key takeaways box */}
-            <div className="key-takeaway">
-              <h3>Success Metrics</h3>
-              <ul>
-                <li>Membership growth vs. targets</li>
-                <li>Retention rate improvement</li>
-                <li>Credit utilization percentage</li>
-                <li>Visitation frequency</li>
-                <li>Additional spending beyond credits</li>
-                <li>Facility usage rates</li>
-                <li>Member satisfaction scores</li>
-              </ul>
-            </div>
+            {/* Success Metrics Visualization */}
+            <motion.div 
+              className="insights-section"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                Success Metrics
+              </motion.h2>
+              
+              <div className="insights-container">
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  <div className="insight-icon">
+                    <FaUsers />
+                  </div>
+                  <div className="insight-value">Growth</div>
+                  <div className="insight-label">Membership Growth</div>
+                  <div className="insight-description">vs. targets</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <div className="insight-icon">
+                    <FaChartLine />
+                  </div>
+                  <div className="insight-value">Retention</div>
+                  <div className="insight-label">Rate Improvement</div>
+                  <div className="insight-description">Member loyalty metrics</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <div className="insight-icon">
+                    <FaDollarSign />
+                  </div>
+                  <div className="insight-value">Utilization</div>
+                  <div className="insight-label">Credit Usage</div>
+                  <div className="insight-description">Percentage of credits used</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <div className="insight-icon">
+                    <FaCalendarAlt />
+                  </div>
+                  <div className="insight-value">Frequency</div>
+                  <div className="insight-label">Visit Rate</div>
+                  <div className="insight-description">Member visitation patterns</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  <div className="insight-icon">
+                    <FaChartPie />
+                  </div>
+                  <div className="insight-value">Spending</div>
+                  <div className="insight-label">Additional Revenue</div>
+                  <div className="insight-description">Beyond credit usage</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  <div className="insight-icon">
+                    <FaTools />
+                  </div>
+                  <div className="insight-value">Usage</div>
+                  <div className="insight-label">Facility Rates</div>
+                  <div className="insight-description">Amenity utilization</div>
+                </motion.div>
+                
+                <motion.div
+                  className="insight-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                >
+                  <div className="insight-icon">
+                    <FaLightbulb />
+                  </div>
+                  <div className="insight-value">Satisfaction</div>
+                  <div className="insight-label">Member Scores</div>
+                  <div className="insight-description">Experience ratings</div>
+                </motion.div>
+              </div>
+            </motion.div>
             
             {/* Add pull quote */}
             <div className="pull-quote">
