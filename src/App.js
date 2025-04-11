@@ -174,10 +174,12 @@ const Dashboard = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : 'auto';
   };
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -195,23 +197,22 @@ const Dashboard = () => {
             <span>Winner's Circle Club</span>
           </div>
           <button 
-            className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+            className="mobile-menu-toggle" 
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            <span className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}></span>
           </button>
           <nav className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-            {navItems.map(item => (
-              <button
+            {navItems.map((item) => (
+              <a
                 key={item.id}
+                href={`#${item.id}`}
                 className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => handleSectionClick(item.id)}
+                onClick={closeMobileMenu}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </nav>
           <button className="logout-button" onClick={handleLogout}>
@@ -224,7 +225,7 @@ const Dashboard = () => {
         <div 
           className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={closeMobileMenu}
-        />
+        ></div>
       )}
 
       {/* Hero Section */}
