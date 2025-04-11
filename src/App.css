@@ -1502,4 +1502,32 @@ section h2::after {
     font-size: 1.75rem;
     margin: 2rem 0 1.5rem;
   }
+}
+
+.revenue-visualization {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 2rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.revenue-visualization h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.key-highlights-section {
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
+  margin: 2rem 0;
+}
+
+.key-highlights-section h2 {
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
 } 

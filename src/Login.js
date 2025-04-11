@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaWineGlass } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import './Login.css';
 
 // Firebase configuration
@@ -47,12 +48,38 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
+    <motion.div 
+      className="login-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div 
+        className="login-box"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        <motion.div 
+          className="logo-container"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+        >
+          <FaWineGlass className="text-5xl text-primary-600" />
+        </motion.div>
+        
         <h1>Welcome Back</h1>
         <p className="subtitle">Sign in to access your account</p>
         
-        <form className="login-form" onSubmit={handleSubmit}>
+        <motion.form 
+          className="login-form" 
+          onSubmit={handleSubmit}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
@@ -87,18 +114,29 @@ function Login() {
             </div>
           </div>
 
-          {error && <div className="error-message">{error}</div>}
+          {error && (
+            <motion.div 
+              className="error-message"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+            >
+              {error}
+            </motion.div>
+          )}
 
-          <button 
+          <motion.button 
             type="submit" 
             className="login-button"
             disabled={loading}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             {loading ? 'Signing in...' : 'Sign In'}
-          </button>
-        </form>
-      </div>
-    </div>
+          </motion.button>
+        </motion.form>
+      </motion.div>
+    </motion.div>
   );
 }
 

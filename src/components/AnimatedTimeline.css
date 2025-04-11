@@ -1,0 +1,85 @@
+.timeline-container {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline-progress {
+  position: relative;
+  height: 0.75rem;
+  background-color: var(--gray-200);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.timeline-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
+  transition: width 1.5s ease-out;
+}
+
+.timeline-phase {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.timeline-node {
+  position: relative;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.timeline-node:hover {
+  transform: scale(1.1);
+}
+
+.timeline-connector {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+  height: calc(100% + 3rem);
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary-500), var(--primary-600));
+  z-index: 0;
+}
+
+.timeline-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.timeline-milestone {
+  transition: background-color 0.3s ease;
+}
+
+.timeline-milestone.completed {
+  background-color: var(--green-200);
+}
+
+.timeline-milestone.current {
+  background-color: var(--primary-200);
+}
+
+.timeline-milestone.upcoming {
+  background-color: var(--gray-200);
+}
+
+@media (max-width: 768px) {
+  .timeline-container {
+    padding: 1rem 0;
+  }
+  
+  .timeline-phase {
+    margin-bottom: 2rem;
+  }
+  
+  .timeline-connector {
+    left: 1.5rem;
+  }
+} 

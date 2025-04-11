@@ -1,0 +1,52 @@
+.insight-card {
+  transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+  transform: translateY(-5px);
+}
+
+.insight-icon {
+  color: var(--primary-600);
+  transition: transform 0.3s ease;
+}
+
+.insight-card:hover .insight-icon {
+  transform: scale(1.1);
+}
+
+.insight-value {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.insight-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.insight-details.expanded {
+  max-height: 500px;
+  transition: max-height 0.3s ease-in;
+}
+
+@media (max-width: 768px) {
+  .insight-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .insight-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .insight-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+} 
