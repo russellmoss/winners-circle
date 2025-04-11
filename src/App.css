@@ -1155,7 +1155,7 @@ tr:hover {
     width: 80%;
     max-width: 300px;
     height: 100vh;
-    background: var(--background-color);
+    background: white;
     flex-direction: column;
     padding: 80px 20px 20px;
     transition: right 0.3s ease;
@@ -1171,10 +1171,17 @@ tr:hover {
     width: 100%;
     text-align: left;
     padding: 12px 16px;
+    color: #0369a1;
+  }
+
+  .nav-item:hover,
+  .nav-item.active {
+    background: #f1f5f9;
   }
 
   .mobile-menu-overlay {
     display: block;
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .mobile-menu-overlay.active {

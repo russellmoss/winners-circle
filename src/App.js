@@ -159,6 +159,19 @@ const Dashboard = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeSection]);
 
+  useEffect(() => {
+    // Close mobile menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (isMobileMenuOpen && !event.target.closest('.nav-menu') && !event.target.closest('.mobile-menu-toggle')) {
+        setIsMobileMenuOpen(false);
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMobileMenuOpen]);
+
   // Add this function to toggle section collapse
   const toggleSection = (sectionId) => {
     setCollapsedSections(prev => ({
