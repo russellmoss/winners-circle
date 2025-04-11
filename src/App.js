@@ -16,6 +16,7 @@ import MembershipComparison from './components/MembershipComparison';
 import KeyHighlights from './components/KeyHighlights';
 import { ProtectedRoute, LoadingOverlay, SectionTransition } from './components/Transitions';
 import ModernNavbar, { navSections } from './components/ModernNavbar';
+import WinnersCircleSummary from './components/WinnersCircleSummary';
 
 // Navigation button component
 const NavButton = ({ section, label, icon, isActive, onClick }) => (
@@ -278,84 +279,21 @@ const Dashboard = () => {
       </div>
       
       <main className="main-content">
-        <SectionTransition>
-          <section id="executive-summary" className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-4 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-darkBrown mb-4 md:mb-8">Executive Summary</h2>
-            
-            <div className="prose max-w-none">
-              <div className="mb-4 md:mb-8 pt-2 md:pt-4">
-                <h3 className="text-xl md:text-2xl font-bold text-darkBrown mb-3 md:mb-4">Winner's Circle Club Summary</h3>
-                <p className="text-gray-700 mb-4">
-                  The Winner's Circle Club represents Milea Estate Vineyard's ultra-premium membership tier, designed to transform the traditional wine club experience into a comprehensive lifestyle proposition.
-                </p>
-
-                <h4 className="text-xl font-semibold text-darkBrown mb-3">Core Concept</h4>
-                <p className="text-gray-700 mb-4">
-                  The Winner's Circle operates on a flexible credit-based model rather than a traditional wine allocation system. Members pay $500 quarterly ($2,000 annually), which is converted to an equivalent credit balance that can be used across the entire Milea ecosystem.
-                </p>
-
-                <h4 className="text-xl font-semibold text-darkBrown mb-3">Key Features</h4>
-                <ul className="list-disc pl-6 mb-4 space-y-2">
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Credit-Based Flexibility:</span> Unlike allocation-based tiers where members receive predetermined wine selections, Winner's Circle members enjoy complete freedom to allocate their credits according to personal preferences.
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Premium Positioning:</span> The club sits atop Milea's existing membership hierarchy (above Jumper, Grand Prix, and Triple Crown tiers), providing a clear upgrade path for existing members.
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Comprehensive Redemption Options:</span> Credits can be used for:
-                    <ul className="list-disc pl-6 mt-2 space-y-1">
-                      <li>Wine purchases (current releases and library wines)</li>
-                      <li>Culinary program (tapas menu and premium dinner series)</li>
-                      <li>Luxury accommodations at Staatsburg House</li>
-                      <li>Merchandise and retail offerings</li>
-                      <li>Events and experiences</li>
-                    </ul>
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Exclusive Infrastructure Access:</span> Beyond credits, membership provides access to:
-                    <ul className="list-disc pl-6 mt-2 space-y-1">
-                      <li>Dedicated club lounge with vineyard views</li>
-                      <li>Personal wine storage lockers</li>
-                      <li>Recreational facilities (pools, tennis, bocce, and pickleball courts)</li>
-                      <li>Biometric access for extended-hours visitation</li>
-                    </ul>
-                  </li>
-                </ul>
-
-                <h4 className="text-xl font-semibold text-darkBrown mb-3">Member Benefits</h4>
-                <ul className="list-disc pl-6 mb-4 space-y-2">
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Enhanced Value:</span> 20% discount on all purchases beyond credit usage (compared to 10-15% for standard tiers)
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Extended Credit Validity:</span> Credits remain valid for 12 months from issuance
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Wine Storage Solution:</span> Personal climate-controlled wine lockers with 24-bottle capacity
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Priority Access:</span> First access to events, accommodations, and culinary experiences
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Personalized Service:</span> Dedicated concierge and wine advisor services
-                  </li>
-                  <li className="text-gray-700">
-                    <span className="font-semibold">Recognition Program:</span> Premium recognition across all touchpoints
-                  </li>
-                </ul>
-
-                <p className="text-gray-700 italic">
-                  The Winner's Circle Club transforms Milea from a simple wine tasting destination into a comprehensive lifestyle venue, offering members a sense of belonging, exclusivity, and enhanced value while driving substantial additional revenue for the winery across all profit centers.
-                </p>
+        <section id="executive-summary" className="mb-16">
+          <SectionTransition>
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h2 className="text-3xl font-gilda font-bold text-darkBrown mb-6">Executive Summary</h2>
+              <WinnersCircleSummary />
+              <div className="prose max-w-none">
+                <div className="mb-4 md:mb-8 pt-2 md:pt-4">
+                  <p className="text-gray-700 mb-4">
+                    Our financial analysis projects that the Winner's Circle Club will be a significant contributor to Milea's revenue growth and profitability. Based on our projections, the club's revenue is expected to grow from $159,360 in Year 1 to $428,280 in Year 2 (a 168.8% increase), reaching $607,560 in Year 3 (a 41.9% increase) and $759,450 in Year 4.
+                  </p>
+                </div>
               </div>
-
-              <p className="text-gray-700 mb-4">
-                Our financial analysis projects that the Winner's Circle Club will be a significant contributor to Milea's revenue growth and profitability. Based on our projections, the club's revenue is expected to grow from $159,360 in Year 1 to $428,280 in Year 2 (a 168.8% increase), reaching $607,560 in Year 3 (a 41.9% increase) and $759,450 in Year 4.
-              </p>
             </div>
-          </section>
-        </SectionTransition>
+          </SectionTransition>
+        </section>
         
         <SectionTransition>
           <section id="business-model" className="section-card">

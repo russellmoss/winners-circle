@@ -1,0 +1,222 @@
+.featureCard {
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.iconWrapper {
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover .iconWrapper {
+  transform: scale(1.1);
+}
+
+.benefitItem {
+  transition: all 0.3s ease;
+}
+
+.benefitItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.highlightBadge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+.summaryQuote {
+  position: relative;
+}
+
+.summaryQuote::before {
+  content: '"';
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  font-size: 4rem;
+  color: #0284c7;
+  opacity: 0.1;
+  font-family: serif;
+}
+
+.summaryQuote::after {
+  content: '"';
+  position: absolute;
+  bottom: -2rem;
+  right: 1rem;
+  font-size: 4rem;
+  color: #0284c7;
+  opacity: 0.1;
+  font-family: serif;
+}
+
+@media (max-width: 768px) {
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Additional enhancements */
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  position: relative;
+  overflow: hidden;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(2, 132, 199, 0.2), transparent);
+}
+
+.sectionTitle {
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #0284c7, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.sectionTitle:hover::after {
+  transform: scaleX(1);
+}
+
+.featureList {
+  position: relative;
+}
+
+.featureList li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.featureList li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #0284c7;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.featureList li:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.benefitIcon {
+  transition: all 0.3s ease;
+}
+
+.benefitItem:hover .benefitIcon {
+  transform: rotate(360deg);
+}
+
+.gradientText {
+  background: linear-gradient(45deg, #0284c7, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hoverCard {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.hoverCard:hover {
+  border-color: rgba(2, 132, 199, 0.2);
+  background-color: rgba(2, 132, 199, 0.05);
+}
+
+.pulseAnimation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .featureCard {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .featureCard:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .highlightBadge {
+    background-color: rgba(2, 132, 199, 0.2);
+    color: #38bdf8;
+  }
+
+  .summaryQuote::before,
+  .summaryQuote::after {
+    color: #38bdf8;
+  }
+
+  .hoverCard:hover {
+    border-color: rgba(56, 189, 248, 0.2);
+    background-color: rgba(56, 189, 248, 0.05);
+  }
+} 
