@@ -55,7 +55,7 @@ const ImplementationVisuals = () => {
             <div className="highlight-label">Annual operating costs</div>
           </div>
           <div className="highlight-item">
-            <div className="highlight-value">18-20 months</div>
+            <div className="highlight-value">28 months</div>
             <div className="highlight-label">Payback period</div>
           </div>
           <div className="highlight-item">
