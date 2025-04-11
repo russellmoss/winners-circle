@@ -46,12 +46,6 @@ const Dashboard = () => {
   const auth = getAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Data for quarterly revenue comparison chart
-  const revenueComparisonData = [
-    { name: 'Traditional Wine Club', revenue: 180 },
-    { name: 'Winner\'s Circle Club', revenue: 500 }
-  ];
-
   // Data for lifetime value comparison
   const lifetimeValueData = [
     { name: 'Traditional Wine Club', value: 1920 },
