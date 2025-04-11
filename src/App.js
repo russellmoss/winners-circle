@@ -54,26 +54,35 @@ const Dashboard = () => {
 
   // Data for projected revenue growth
   const revenueGrowthData = [
-    { month: 1, revenue: 50000 },
-    { month: 2, revenue: 100000 },
-    { month: 3, revenue: 150000 },
-    { month: 4, revenue: 200000 },
-    { month: 5, revenue: 250000 },
-    { month: 6, revenue: 300000 },
-    { month: 7, revenue: 350000 },
-    { month: 8, revenue: 400000 },
-    { month: 9, revenue: 450000 },
-    { month: 10, revenue: 500000 },
-    { month: 11, revenue: 550000 },
-    { month: 12, revenue: 612000 }
+    { year: 1, directSpend: 128000, additionalSpend: 25600, accommodationSpend: 5760, total: 159360 },
+    { year: 2, directSpend: 296000, additionalSpend: 59200, accommodationSpend: 13320, total: 368520 },
+    { year: 3, directSpend: 438000, additionalSpend: 87600, accommodationSpend: 19800, total: 545400 },
+    { year: 4, directSpend: 562238, additionalSpend: 112447.60, accommodationSpend: 25380, total: 700065.60 }
   ];
 
   // Data for implementation costs
   const implementationCostsData = [
     { name: 'Physical Infrastructure', value: 175000 },
     { name: 'Technology Systems', value: 62500 },
-    { name: 'Staffing', value: 135000 },
+    { name: 'Shared Club Manager', value: 85000 },
     { name: 'Operations', value: 87500 }
+  ];
+
+  // Data for revenue breakdown by source
+  const revenueBreakdownData = [
+    { year: 1, directMembership: 128000, beyondCredit: 25600, accommodation: 5760 },
+    { year: 2, directMembership: 296000, beyondCredit: 59200, accommodation: 13320 },
+    { year: 3, directMembership: 438000, beyondCredit: 87600, accommodation: 19800 },
+    { year: 4, directMembership: 562238, beyondCredit: 112447.60, accommodation: 25380 }
+  ];
+
+  // Data for membership growth
+  const membershipGrowthData = [
+    { year: 0, total: 36, upgrades: 0, new: 0 },
+    { year: 1, total: 64, upgrades: 24, new: 40 },
+    { year: 2, total: 148, upgrades: 38, new: 120 },
+    { year: 3, total: 220, upgrades: 52, new: 200 },
+    { year: 4, total: 281, upgrades: 66, new: 280 }
   ];
 
   // Colors for the pie chart
@@ -654,7 +663,7 @@ const Dashboard = () => {
                 </PieChart>
               </ResponsiveContainer>
               <p className="mt-4 text-sm text-gray-600">
-                Total first-year investment ranges from $395,000 to $525,000, with annual operating costs between $210,000 and $265,000.
+                Total first-year investment ranges from $310,000 to $440,000, with annual operating costs between $175,000 and $200,000.
               </p>
             </div>
           </div>
@@ -679,29 +688,28 @@ const Dashboard = () => {
               <h3>Membership Conversion Assumptions</h3>
               <p>Based on Milea's current metrics of 600 members across existing tiers:</p>
               <ul>
-                <li><strong>Existing Member Upgrades</strong>: We project a 5% conversion rate from current tiers to the Winner's Circle, resulting in approximately 30 members transitioning to the premium tier.</li>
-                <li><strong>Tasting Room Conversions</strong>: While the current club conversion rate is 4% of visitors, we estimate a 0.5% conversion rate directly to the Winner's Circle from the 8,400 non-member visitors, resulting in 42 new premium members annually.</li>
-                <li><strong>Total First-Year Membership</strong>: 72 members (30 upgrades + 42 new acquisitions)</li>
+                <li><strong>Year 1</strong>: 64 members (24 upgrades from traditional club + 40 new conversions)</li>
+                <li><strong>Year 2</strong>: 148 members (additional 14 upgrades + 80 new conversions)</li>
+                <li><strong>Year 3</strong>: 220 members (additional 14 upgrades + 80 new conversions)</li>
+                <li><strong>Year 4</strong>: 281 members (additional 14 upgrades + 80 new conversions)</li>
               </ul>
 
               <h3>Revenue Impact Analysis</h3>
               <h4>Direct Membership Revenue:</h4>
               <ul>
-                <li><strong>Existing Member Upgrade Revenue</strong>: 
-                  <ul>
-                    <li>Current: 30 members × $180/quarter = $21,600/quarter</li>
-                    <li>Winner's Circle: 30 members × $500/quarter = $60,000/quarter</li>
-                    <li><strong>Net Increase</strong>: $38,400/quarter or $153,600/annually</li>
-                  </ul>
-                </li>
-                <li><strong>New Member Revenue</strong>:
-                  <ul>
-                    <li>42 new members × $500/quarter = $84,000/quarter or $336,000 annually</li>
-                    <li>Without the Winner's Circle, we might have converted approximately 5% of these 42 members (2 members) to traditional tiers at $180/quarter = $1,440/quarter</li>
-                    <li><strong>Net Increase</strong>: $82,560/quarter or $330,240 annually</li>
-                  </ul>
-                </li>
-                <li><strong>Total Direct Revenue Increase</strong>: $121,560/quarter or $483,840 annually</li>
+                <li><strong>Year 1</strong>: $128,000 direct spend + $25,600 additional spend + $5,760 accommodation = $159,360 total</li>
+                <li><strong>Year 2</strong>: $296,000 direct spend + $59,200 additional spend + $13,320 accommodation = $368,520 total</li>
+                <li><strong>Year 3</strong>: $438,000 direct spend + $87,600 additional spend + $19,800 accommodation = $545,400 total</li>
+                <li><strong>Year 4</strong>: $562,238 direct spend + $112,447.60 additional spend + $25,380 accommodation = $700,065.60 total</li>
+              </ul>
+
+              <h4>Accommodation Revenue Calculation:</h4>
+              <ul>
+                <li><strong>Formula</strong>: 10% of members × 3 nights × $300 per night</li>
+                <li><strong>Year 1</strong>: 64 members × 10% × 3 nights × $300 = $5,760</li>
+                <li><strong>Year 2</strong>: 148 members × 10% × 3 nights × $300 = $13,320</li>
+                <li><strong>Year 3</strong>: 220 members × 10% × 3 nights × $300 = $19,800</li>
+                <li><strong>Year 4</strong>: 281 members × 10% × 3 nights × $300 = $25,380</li>
               </ul>
 
               <h4>Additional Revenue Streams:</h4>
@@ -729,17 +737,35 @@ const Dashboard = () => {
               <ul>
                 <li><strong>Physical Infrastructure</strong>: $150,000-$200,000 one-time investment</li>
                 <li><strong>Technology Systems</strong>: $50,000-$75,000 implementation plus $15,000 annual maintenance</li>
-                <li><strong>Staffing</strong>: $120,000-$150,000 additional annual labor costs</li>
+                <li><strong>Shared Club Manager</strong>: $85,000 annual salary (shared between Milea Estate and HV Vineyards)</li>
                 <li><strong>Ongoing Operations</strong>: $75,000-$100,000 annual operational expenses</li>
               </ul>
-              <p><strong>Total First-Year Investment</strong>: $395,000-$525,000<br />
-              <strong>Annual Operating Costs</strong>: $210,000-$265,000</p>
+              <p><strong>Total First-Year Investment</strong>: $310,000-$440,000<br />
+              <strong>Annual Operating Costs</strong>: $175,000-$200,000</p>
 
               <h3>Return on Investment</h3>
               <ul>
-                <li><strong>First-Year ROI</strong>: $612,000 revenue against $460,000 average investment = 33% ROI</li>
-                <li><strong>Ongoing Annual ROI</strong>: $612,000 revenue against $237,500 average operating costs = 158% ROI</li>
-                <li><strong>Payback Period</strong>: Approximately 9-10 months</li>
+                <li><strong>First-Year ROI</strong>: $159,360 revenue against $375,000 average investment = -57% ROI</li>
+                <li><strong>Year 2 ROI</strong>: $368,520 revenue against $187,500 average operating costs = 97% ROI</li>
+                <li><strong>Year 3 ROI</strong>: $545,400 revenue against $187,500 average operating costs = 191% ROI</li>
+                <li><strong>Year 4 ROI</strong>: $700,065.60 revenue against $187,500 average operating costs = 273% ROI</li>
+                <li><strong>Payback Period</strong>: Approximately 18-20 months</li>
+              </ul>
+
+              <h3>Multi-Year Financial Impact</h3>
+              <ul>
+                <li><strong>Total 4-Year Revenue</strong>: $1,773,345.60</li>
+                <li><strong>Total 4-Year Investment</strong>: $937,500 ($375,000 initial + $187,500 × 3 years operating)</li>
+                <li><strong>4-Year Cumulative ROI</strong>: 89%</li>
+                <li><strong>Average Annual Revenue Growth</strong>: 64%</li>
+                <li><strong>Revenue Breakdown by Year</strong>:
+                  <ul>
+                    <li>Year 1: $159,360 (9% of total)</li>
+                    <li>Year 2: $368,520 (21% of total)</li>
+                    <li>Year 3: $545,400 (31% of total)</li>
+                    <li>Year 4: $700,065.60 (39% of total)</li>
+                  </ul>
+                </li>
               </ul>
             </div>
             
@@ -749,14 +775,14 @@ const Dashboard = () => {
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={revenueGrowthData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" label={{ value: 'Month', position: 'insideBottom', offset: -5 }} />
+                  <XAxis dataKey="year" label={{ value: 'Year', position: 'insideBottom', offset: -5 }} />
                   <YAxis label={{ value: 'Revenue ($)', angle: -90, position: 'insideLeft' }} />
                   <Tooltip formatter={(value) => ['$' + value.toLocaleString(), 'Revenue']} />
-                  <Line type="monotone" dataKey="revenue" stroke="#0ea5e9" activeDot={{ r: 8 }} />
+                  <Line type="monotone" dataKey="total" stroke="#0ea5e9" activeDot={{ r: 8 }} />
                 </LineChart>
               </ResponsiveContainer>
               <p className="mt-4 text-sm text-gray-600">
-                Projected revenue growth over 12 months, reaching $612,000 in incremental annual revenue.
+                Projected revenue growth over 4 years, reaching $612,000 in incremental annual revenue.
               </p>
             </div>
             
@@ -1083,7 +1109,7 @@ const Dashboard = () => {
                 The Winner's Circle Club represents a significant opportunity for Milea to enhance its membership program, create distinctive competitive advantage, and substantially increase revenue. By offering a premium credit-based tier above the existing Jumper, Grand Prix, and Triple Crown levels, Milea can better serve its most valuable customers while attracting new high-value members.
               </p>
               <p>
-                The projected first-year revenue impact of $612,000 would represent an approximately 142% increase over the current annual club revenue of $432,000. While the implementation requires significant investment in infrastructure, technology, and staffing, the ongoing return on investment makes this a compelling strategic initiative.
+                The projected first-year revenue impact of $159,360 would represent an approximately 37% increase over the current annual club revenue of $432,000. While the implementation requires significant investment in infrastructure, technology, and staffing, the ongoing return on investment makes this a compelling strategic initiative.
               </p>
               <p>
                 The combination of increased direct revenue, enhanced retention, and additional spending streams creates a powerful financial case for implementation. Beyond the numbers, the Winner's Circle would position Milea as a premier destination in the Hudson Valley wine region and create a foundation for continued growth and innovation in the member experience.
