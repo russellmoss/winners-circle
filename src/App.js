@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { LineChart, Line, CartesianGrid } from 'recharts';
-import { FaChartLine, FaUsers, FaDollarSign, FaTrophy, FaCalendarAlt, FaChartPie, FaLightbulb, FaChevronDown, FaWineGlass, FaTools, FaList } from 'react-icons/fa';
+import { FaChartLine, FaUsers, FaDollarSign, FaTrophy, FaCalendarAlt, FaChartPie, FaLightbulb, FaChevronDown, FaWineGlass, FaTools, FaList, FaDownload } from 'react-icons/fa';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { motion, AnimatePresence } from 'framer-motion';
 import Login from './Login';
@@ -74,6 +74,41 @@ const MobileJumpMenu = ({ sections, activeSection, onSelect }) => {
         )}
       </AnimatePresence>
     </div>
+  );
+};
+
+// Download Report component
+const DownloadReport = () => {
+  const handleDownload = () => {
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = '/Winners_Circle_Analysis.pdf';
+    link.download = 'Winners_Circle_Analysis.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <motion.div 
+      className="max-w-4xl mx-auto px-4 py-8 text-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <p className="text-lg text-gray-700 mb-4">
+        To read a comprehensive report, click the button below to download the report
+      </p>
+      <motion.button
+        onClick={handleDownload}
+        className="bg-primary-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-primary-700 transition-colors duration-200 flex items-center space-x-2 mx-auto"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <FaDownload className="text-xl" />
+        <span>Download Report</span>
+      </motion.button>
+    </motion.div>
   );
 };
 
@@ -283,14 +318,19 @@ const Dashboard = () => {
           <SectionTransition>
             <div className="bg-white rounded-xl shadow-lg p-8">
               <h2 className="text-3xl font-gilda font-bold text-darkBrown mb-6">Executive Summary</h2>
-              <WinnersCircleSummary />
               <div className="prose max-w-none">
                 <div className="mb-4 md:mb-8 pt-2 md:pt-4">
                   <p className="text-gray-700 mb-4">
-                    Our financial analysis projects that the Winner's Circle Club will be a significant contributor to Milea's revenue growth and profitability. Based on our projections, the club's revenue is expected to grow from $159,360 in Year 1 to $428,280 in Year 2 (a 168.8% increase), reaching $607,560 in Year 3 (a 41.9% increase) and $759,450 in Year 4.
+                    The Winner's Circle Club represents Milea Estate Vineyard's ultra-premium membership tier, designed to transform the traditional wine club experience into a comprehensive lifestyle proposition.
+                  </p>
+                  <DownloadReport />
+                  <h3 className="text-2xl font-gilda font-bold text-darkBrown mt-8 mb-4">Core Concept</h3>
+                  <p className="text-gray-700 mb-4">
+                    The Winner's Circle operates on a flexible credit-based model rather than a traditional wine allocation system. Members pay $500 quarterly ($2,000 annually), which is converted to an equivalent credit balance that can be used across the entire Milea ecosystem.
                   </p>
                 </div>
               </div>
+              <WinnersCircleSummary />
             </div>
           </SectionTransition>
         </section>
