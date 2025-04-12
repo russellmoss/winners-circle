@@ -90,7 +90,7 @@ const Dashboard = () => {
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [dispatch]);
+  }, [dispatch, isMobileMenuOpen]);
 
   const toggleSection = (sectionId) => {
     dispatch({ type: SET_ACTIVE_SECTION, payload: sectionId });

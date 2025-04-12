@@ -1,6 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaWineGlass, FaGem, FaCreditCard, FaList, FaKey, FaBuilding, FaStar, FaUser, FaClock, FaLock, FaCalendarAlt } from 'react-icons/fa';
+import { 
+  FaWineGlass, 
+  FaGem, 
+  FaCreditCard, 
+  FaList, 
+  FaKey, 
+  FaBuilding, 
+  FaStar, 
+  FaUser, 
+  FaClock, 
+  FaLock, 
+  FaCalendarAlt 
+} from 'react-icons/fa';
 import styles from './WinnersCircleSummary.module.css';
 
 const WinnersCircleSummary = () => {
