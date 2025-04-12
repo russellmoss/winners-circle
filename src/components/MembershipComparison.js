@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { FaUsers, FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import { FaChartBar, FaArrowUp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const MembershipComparison = () => {
   // Membership growth data

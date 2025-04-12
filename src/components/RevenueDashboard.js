@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   Area, AreaChart, ComposedChart, LabelList
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChartBar, FaChartLine, FaChartPie, FaExchangeAlt } from 'react-icons/fa';
+import { FaChartBar, FaChartLine, FaChartPie, FaExchangeAlt, FaDollarSign } from 'react-icons/fa';
 
 // Custom tooltip component with enhanced styling
 const CustomTooltip = ({ active, payload, label, valuePrefix = '$' }) => {

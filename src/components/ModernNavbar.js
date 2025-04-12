@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { FaBars, FaTimes, FaChartLine, FaDollarSign, FaTrophy, FaSignOutAlt, FaChevronUp } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaWineGlass, FaChartLine, FaDollarSign, FaTrophy, FaSignOutAlt, FaBars, FaTimes, FaArrowUp } from 'react-icons/fa';
 import { getAuth, signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -235,7 +235,7 @@ const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
             onClick={scrollToTop}
             aria-label="Scroll to top"
           >
-            <FaArrowUp />
+            <FaChevronUp />
           </motion.button>
         )}
       </AnimatePresence>
