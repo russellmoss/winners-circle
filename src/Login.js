@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import './Login.css';
 
 // Firebase configuration
+// Updated configuration for Netlify deployment
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
