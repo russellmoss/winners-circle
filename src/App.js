@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { FaChartLine, FaDollarSign, FaTrophy, FaChevronDown, FaList, FaDownload } from 'react-icons/fa';
 import { getAuth, signOut } from 'firebase/auth';
@@ -19,6 +19,7 @@ const Dashboard = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [collapsedSections, setCollapsedSections] = useState({});
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const navigate = useNavigate();
   const auth = getAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -92,6 +93,15 @@ const Dashboard = () => {
   const handleNavClick = (sectionId) => {
     setActiveSection(sectionId);
     closeMobileMenu();
+  };
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      navigate('/login');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
   };
 
   // Download Report component

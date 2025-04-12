@@ -1,6 +1,6 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { FaChartBar, FaArrowUp } from 'react-icons/fa';
+import { FaUsers, FaChartLine, FaArrowUp } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const MembershipComparison = () => {

@@ -5,7 +5,7 @@ import {
   Area, AreaChart, ComposedChart, LabelList
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChartBar, FaChartLine, FaChartPie, FaExchangeAlt, FaDollarSign } from 'react-icons/fa';
+import { FaChartBar, FaChartLine, FaChartPie, FaExchangeAlt, FaDollarSign, FaTrophy } from 'react-icons/fa';
 
 // Custom tooltip component with enhanced styling
 const CustomTooltip = ({ active, payload, label, valuePrefix = '$' }) => {
