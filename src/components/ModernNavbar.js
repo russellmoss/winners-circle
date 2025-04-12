@@ -1,7 +1,60 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { FaBars, FaTimes, FaChartLine, FaDollarSign, FaTrophy, FaSignOutAlt, FaChevronUp, FaWineGlass } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAuth, signOut } from 'firebase/auth';
+
+// Extracted and memoized NavItem component
+const NavItem = memo(({ section, isActive, onHover, onSectionClick }) => {
+  return (
+    <div 
+      className="relative"
+      onMouseEnter={() => onHover(section.id)}
+      onMouseLeave={() => onHover(null)}
+    >
+      <button
+        className={`relative px-4 py-2 font-medium text-base transition-colors duration-200 rounded-lg ${
+          isActive 
+            ? 'text-primary-700' 
+            : 'text-gray-600 hover:text-primary-600'
+        }`}
+        onClick={() => onSectionClick(section.id)}
+      >
+        <span className="flex items-center gap-2">
+          <span className="text-base">{section.icon}</span>
+          <span>{section.label}</span>
+        </span>
+        
+        {isActive && (
+          <motion.div 
+            className="absolute bottom-0 left-0 h-0.5 bg-primary-600 w-full"
+            layoutId="activeSection"
+            transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+          />
+        )}
+      </button>
+      
+      {/* Preview tooltip on hover */}
+      <AnimatePresence>
+        {isActive && section.preview && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute left-0 top-full z-50 w-64 p-4 bg-white rounded-lg shadow-xl border border-gray-100 mt-1"
+          >
+            <div className="absolute -top-2 left-6 w-4 h-4 bg-white transform rotate-45 border-t border-l border-gray-100"></div>
+            <h4 className="font-semibold text-gray-900 mb-1">{section.label}</h4>
+            <p className="text-sm text-gray-600">{section.preview}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+});
+
+// Display name for debugging
+NavItem.displayName = 'NavItem';
 
 const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,7 +89,7 @@ const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
   }, []);
   
   // Handle smooth scrolling
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = useCallback((sectionId) => {
     const element = document.getElementById(sectionId);
     
     if (element) {
@@ -55,77 +108,30 @@ const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
       // Update active section via callback
       onNavClick(sectionId);
     }
-  };
+  }, [onNavClick]);
   
   // Handle logout
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     try {
       await signOut(auth);
       // Redirect handled by ProtectedRoute
     } catch (error) {
       console.error('Error signing out:', error);
     }
-  };
+  }, [auth]);
   
   // Scroll to top function
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  };
+  }, []);
   
-  // Navigation item component
-  const NavItem = ({ section, isActive }) => {
-    const isHovered = hoverItem === section.id;
-    
-    return (
-      <div 
-        className="relative"
-        onMouseEnter={() => setHoverItem(section.id)}
-        onMouseLeave={() => setHoverItem(null)}
-      >
-        <button
-          className={`relative px-4 py-2 font-medium text-base transition-colors duration-200 rounded-lg ${
-            isActive 
-              ? 'text-primary-700' 
-              : 'text-gray-600 hover:text-primary-600'
-          }`}
-          onClick={() => scrollToSection(section.id)}
-        >
-          <span className="flex items-center gap-2">
-            <span className="text-base">{section.icon}</span>
-            <span>{section.label}</span>
-          </span>
-          
-          {isActive && (
-            <motion.div 
-              className="absolute bottom-0 left-0 h-0.5 bg-primary-600 w-full"
-              layoutId="activeSection"
-              transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-            />
-          )}
-        </button>
-        
-        {/* Preview tooltip on hover */}
-        <AnimatePresence>
-          {isHovered && section.preview && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.2 }}
-              className="absolute left-0 top-full z-50 w-64 p-4 bg-white rounded-lg shadow-xl border border-gray-100 mt-1"
-            >
-              <div className="absolute -top-2 left-6 w-4 h-4 bg-white transform rotate-45 border-t border-l border-gray-100"></div>
-              <h4 className="font-semibold text-gray-900 mb-1">{section.label}</h4>
-              <p className="text-sm text-gray-600">{section.preview}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    );
-  };
+  // Handle hover state
+  const handleHover = useCallback((sectionId) => {
+    setHoverItem(sectionId);
+  }, []);
   
   return (
     <>
@@ -154,6 +160,8 @@ const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
                   key={section.id}
                   section={section}
                   isActive={activeSection === section.id}
+                  onHover={handleHover}
+                  onSectionClick={scrollToSection}
                 />
               ))}
             </nav>
@@ -201,20 +209,10 @@ const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
                       }`}
                       onClick={() => scrollToSection(section.id)}
                     >
-                      <span className="text-lg">{section.icon}</span>
+                      <span className="text-base">{section.icon}</span>
                       <span>{section.label}</span>
                     </button>
                   ))}
-                  
-                  <div className="border-t border-gray-100 my-2 pt-2">
-                    <button
-                      onClick={handleLogout}
-                      className="flex items-center space-x-3 px-4 py-3 w-full text-left rounded-md transition-colors text-gray-600 hover:bg-gray-50"
-                    >
-                      <FaSignOutAlt />
-                      <span>Logout</span>
-                    </button>
-                  </div>
                 </nav>
               </div>
             </motion.div>
@@ -230,17 +228,14 @@ const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-primary-600 border border-gray-200 z-40"
             onClick={scrollToTop}
+            className="fixed bottom-8 right-8 bg-primary-600 text-white p-3 rounded-full shadow-lg hover:bg-primary-700 transition-colors z-50"
             aria-label="Scroll to top"
           >
-            <FaChevronUp />
+            <FaChevronUp size={20} />
           </motion.button>
         )}
       </AnimatePresence>
-      
-      {/* Spacer to compensate for fixed header */}
-      <div className={`h-${isScrolled ? '16' : '24'}`} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer, useCallback, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { FaChartLine, FaDollarSign, FaTrophy, FaChevronDown, FaList, FaDownload } from 'react-icons/fa';
 import { getAuth, signOut } from 'firebase/auth';
@@ -13,16 +13,43 @@ import { ProtectedRoute, LoadingOverlay, SectionTransition } from './components/
 import ModernNavbar from './components/ModernNavbar';
 import WinnersCircleSummary from './components/WinnersCircleSummary';
 
+// Define action types
+const SET_ACTIVE_SECTION = 'SET_ACTIVE_SECTION';
+const SET_LOADING = 'SET_LOADING';
+const SET_SCROLL_TOP = 'SET_SCROLL_TOP';
+const SET_MOBILE_MENU = 'SET_MOBILE_MENU';
+
+// Initial state
+const initialState = {
+  activeSection: 'executive-summary',
+  isLoading: false,
+  showScrollTop: false,
+  isMobileMenuOpen: false
+};
+
+// Reducer function
+const dashboardReducer = (state, action) => {
+  switch (action.type) {
+    case SET_ACTIVE_SECTION:
+      return { ...state, activeSection: action.payload };
+    case SET_LOADING:
+      return { ...state, isLoading: action.payload };
+    case SET_SCROLL_TOP:
+      return { ...state, showScrollTop: action.payload };
+    case SET_MOBILE_MENU:
+      return { ...state, isMobileMenuOpen: action.payload };
+    default:
+      return state;
+  }
+};
+
 // Main Dashboard component
 const Dashboard = () => {
-  const [activeSection, setActiveSection] = useState('executive-summary');
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [collapsedSections, setCollapsedSections] = useState({});
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [state, dispatch] = useReducer(dashboardReducer, initialState);
+  const { activeSection, isLoading, showScrollTop, isMobileMenuOpen } = state;
   const navigate = useNavigate();
   const auth = getAuth();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const timeoutRef = useRef(null);
 
   // Navigation sections
   const sections = [
@@ -31,78 +58,65 @@ const Dashboard = () => {
     { id: 'strategic', label: 'Strategic Impact', icon: <FaTrophy /> }
   ];
 
-  // Scroll progress handler
-  useEffect(() => {
-    const handleScroll = () => {
-      // Calculate scroll progress
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      setScrollProgress(scrollPercent);
+  // Debounced scroll handler
+  const handleScroll = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    
+    timeoutRef.current = setTimeout(() => {
+      const scrollPosition = window.scrollY;
+      dispatch({ type: SET_SCROLL_TOP, payload: scrollPosition > 500 });
+    }, 100);
+  }, []);
 
-      // Update active section based on scroll position
-      const sections = document.querySelectorAll('section[id]');
-      let currentSection = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
-          currentSection = sectionId;
-        }
-      });
-      
-      if (currentSection !== activeSection) {
-        setActiveSection(currentSection);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  }, [handleScroll]);
 
   // Handle click outside mobile menu
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isMobileMenuOpen && !event.target.closest('.mobile-menu')) {
-        setIsMobileMenuOpen(false);
+        dispatch({ type: SET_MOBILE_MENU, payload: false });
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isMobileMenuOpen]);
+  }, [dispatch]);
 
   const toggleSection = (sectionId) => {
-    setCollapsedSections(prev => ({
-      ...prev,
-      [sectionId]: !prev[sectionId]
-    }));
+    dispatch({ type: SET_ACTIVE_SECTION, payload: sectionId });
   };
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    dispatch({ type: SET_MOBILE_MENU, payload: !isMobileMenuOpen });
   };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
+    dispatch({ type: SET_MOBILE_MENU, payload: false });
   };
 
-  const handleNavClick = (sectionId) => {
-    setActiveSection(sectionId);
+  const handleNavClick = useCallback((sectionId) => {
+    dispatch({ type: SET_ACTIVE_SECTION, payload: sectionId });
     closeMobileMenu();
-  };
+  }, []);
 
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     try {
       await auth.signOut();
       navigate('/login');
     } catch (error) {
       console.error('Error signing out:', error);
     }
-  };
+  }, [auth, navigate]);
 
   // Download Report component
   const DownloadReport = () => {
