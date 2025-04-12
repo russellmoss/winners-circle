@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer, useCallback, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { FaChartLine, FaDollarSign, FaTrophy, FaChevronDown, FaList, FaDownload } from 'react-icons/fa';
-import { getAuth, signOut } from 'firebase/auth';
+import { FaChartLine, FaDollarSign, FaTrophy, FaDownload } from 'react-icons/fa';
+import { getAuth } from 'firebase/auth';
 import { motion, AnimatePresence } from 'framer-motion';
 import Login from './Login';
 import './App.css';
@@ -91,14 +91,6 @@ const Dashboard = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [dispatch, isMobileMenuOpen]);
-
-  const toggleSection = (sectionId) => {
-    dispatch({ type: SET_ACTIVE_SECTION, payload: sectionId });
-  };
-
-  const toggleMobileMenu = () => {
-    dispatch({ type: SET_MOBILE_MENU, payload: !isMobileMenuOpen });
-  };
 
   const closeMobileMenu = () => {
     dispatch({ type: SET_MOBILE_MENU, payload: false });

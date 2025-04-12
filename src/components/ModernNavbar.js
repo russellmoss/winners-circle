@@ -60,7 +60,6 @@ const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [hoverItem, setHoverItem] = useState(null);
   const auth = getAuth();
   const navbarRef = useRef(null);
   
@@ -128,9 +127,10 @@ const ModernNavbar = ({ activeSection, sections, onNavClick }) => {
     });
   }, []);
   
-  // Handle hover state
-  const handleHover = useCallback((sectionId) => {
-    setHoverItem(sectionId);
+  // Handle hover state - simplified since we're not using the hoverItem state
+  const handleHover = useCallback(() => {
+    // This function is called by NavItem but we're not using the state
+    // Keeping it as a no-op function to maintain the component interface
   }, []);
   
   return (
