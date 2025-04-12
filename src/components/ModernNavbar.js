@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaBars, FaTimes, FaChartLine, FaDollarSign, FaTrophy, FaSignOutAlt, FaChevronUp } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChartLine, FaDollarSign, FaTrophy, FaSignOutAlt, FaChevronUp, FaWineGlass } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';

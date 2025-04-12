@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { FaChartLine, FaDollarSign, FaTrophy, FaChevronDown, FaList } from 'react-icons/fa';
+import { FaChartLine, FaDollarSign, FaTrophy, FaChevronDown, FaList, FaDownload } from 'react-icons/fa';
 import { getAuth, signOut } from 'firebase/auth';
 import { motion, AnimatePresence } from 'framer-motion';
 import Login from './Login';
